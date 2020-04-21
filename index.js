@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://jung:rmswnd12@boilerplate-crit4.mongodb.net/test
 
 const { User } = require("./models/User")
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
 
 app.post('/register', (req, res) => {
     const user = new User(req.body)
