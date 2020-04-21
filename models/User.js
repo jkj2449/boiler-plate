@@ -1,18 +1,18 @@
-const mongooes = require('mongooes');
+const mongoose = require('mongoose');
 
-const userSchema = mongooes.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String,
         maxlength: 50
     },
     email: {
         type: String,
-        trim: ture,
+        trim: true,
         unique: 1
     },
     password: {
         type: String,
-        minlength: 50
+        maxlength: 50
     },
     lastname: {
         type: String,
@@ -31,6 +31,6 @@ const userSchema = mongooes.Schema({
     }
 })
 
-const User = mongooes.model('User', userSchema)
+const User = mongoose.model('User', userSchema)
 
 module.exports = { User }
