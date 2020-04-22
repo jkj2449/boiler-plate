@@ -4,7 +4,7 @@ const port = 5000
 const config = require('./config/key')
 
 const cookieParser = require('cookie-parser')
-app.use(cookieParser)
+app.use(cookieParser())
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))
