@@ -38,6 +38,7 @@ userSchema.pre('save', (next) => {
     
     //비밀번호 암호화
     if(!user.isModified('password')) {
+        next()
         return
     }
 
