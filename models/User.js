@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        maxlength: 50
+        maxlength: 100
     },
     lastname: {
         type: String,
@@ -34,7 +34,7 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     let user = this;
     
     //비밀번호 암호화
@@ -54,14 +54,14 @@ userSchema.pre('save', (next) => {
     });
 })
 
-userSchema.methods.comparePassword = (plainPassword, cb) => {
+userSchema.methods.comparePassword = function (plainPassword, cb) {
     bcrypt.compare(plainPassword, this.password, (err, isMatch) => {
         if(err) return cb(err)
         cb(null, true)
     })
 }
 
-userSchema.methods.generateToken = (cb) => {
+userSchema.methods.generateToken = function (cb) {
     let user = this;
 
     let token = jwt.sign(user._id.toHexString(), "secretToken")

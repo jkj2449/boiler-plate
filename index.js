@@ -21,11 +21,15 @@ const { User } = require("./models/User")
 app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
 
 app.post('/register', (req, res) => {
-
-
     const user = new User(req.body)
     user.save((err, doc) => {
-        if(err) return res.json({success: false, err})
+        if(err) {
+            console.log(err)
+            return res.json({
+                success: false,
+                message: "등록에 실패했습니다."
+            })
+        }
         return res.status(200).json({
             success: true
         })
@@ -41,7 +45,7 @@ app.post('/login', (req, res) => {
             })
         }
 
-        user.comparePssword(req.body.password, (err, isMatch) => {
+        user.comparePassword(req.body.password, (err, isMatch) => {
             if(!isMatch) {
                 return res.json({
                     loginSuccess: false,
