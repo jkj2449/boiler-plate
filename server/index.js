@@ -84,7 +84,7 @@ app.get('/api/users/logout', auth, (req, res) => {
         _id: req.user._id
     }, {
         token: ""
-    }, (err, user => {
+    }, (err => {
         if(err) return res.json({
             success: false
         })
