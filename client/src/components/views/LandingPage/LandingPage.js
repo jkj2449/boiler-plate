@@ -1,6 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
-//import axios from 'axois'
+import { withRouter } from 'react-router-dom';
 
 function LandingPage(props) {
     const onLogoutHandler = () => {
@@ -27,4 +27,4 @@ function LandingPage(props) {
     )
 }
 
-export default LandingPage
+export default withRouter(LandingPage)
